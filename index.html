@@ -5,22 +5,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Havenwatch Foundation — Online Child Protection</title>
 
-  <!-- Simple theme variables: dark/minimal (default) and cream/light swap -->
   <style>
     :root {
-      --bg: #0f1720;         /* dark navy */
-      --panel: #0b1220;      /* slightly darker panels */
-      --accent: #e6decf;     /* cream accent for headings/links */
-      --muted: #9aa4b2;      /* muted text */
-      --text: #f3f4f6;       /* primary text on dark */
+      --bg: #0f1720;
+      --panel: #0b1220;
+      --accent: #e6decf;
+      --muted: #9aa4b2;
+      --text: #f3f4f6;
       --maxw: 1000px;
     }
 
-    /* Cream theme variables (applied with .cream on body) */
     .cream {
-      --bg: #fbf7ef;         /* cream background */
-      --panel: #fffaf2;      /* pale panels */
-      --accent: #2b3b4a;     /* dark slate for headings */
+      --bg: #fbf7ef;
+      --panel: #fffaf2;
+      --accent: #2b3b4a;
       --muted: #5a646c;
       --text: #15202b;
     }
@@ -28,16 +26,31 @@
     * { box-sizing: border-box; }
     html,body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: var(--bg); color: var(--text); }
     .wrap { max-width: var(--maxw); margin: 28px auto; padding: 20px; }
-    header { display: flex; gap: 18px; align-items: center; background: linear-gradient(180deg, rgba(0,0,0,0.05), transparent); padding: 18px; border-radius: 10px; }
-    .logo { width: 84px; height: 84px; flex: 0 0 84px; display:flex; align-items:center; justify-content:center; border-radius:10px; background:var(--panel); }
-    .logo img { max-width:76px; max-height:76px; display:block; }
-    .logo-fallback { font-weight:700; letter-spacing:0.4px; font-size:18px; color:var(--accent); text-align:center; padding:6px; }
-    header h1 { margin: 0; font-size:20px; color:var(--accent); }
-    header p { margin: 4px 0 0 0; color:var(--muted); font-size:13px; }
+    header {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05), transparent);
+      padding: 18px;
+      border-radius: 10px;
+    }
 
-    .controls { margin-left:auto; display:flex; gap:8px; }
-    .btn { background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--accent); padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600; font-size:13px; }
-    .btn.secondary { border-style:dashed; color:var(--muted); font-weight:600; }
+    /* left area (title/desc) */
+    .head-left { display:flex; gap:14px; align-items:center; flex:1; min-width:0; }
+    .head-text { min-width:0; }
+    .head-text h1 { margin: 0; font-size:20px; color:var(--accent); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .head-text p { margin: 4px 0 0 0; color:var(--muted); font-size:13px; white-space:normal; }
+
+    /* middle controls */
+    .controls { display:flex; gap:8px; align-items:center; margin-left:12px; flex-shrink:0; }
+    .btn { background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--accent); padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
+    .btn.secondary { border-style:dashed; color:var(--muted); }
+
+    /* right logo container */
+    .logo { width:84px; height:84px; flex:0 0 84px; display:flex; align-items:center; justify-content:center; border-radius:10px; background:var(--panel); margin-left:18px; }
+    .logo img { max-width:76px; max-height:76px; display:block; }
+    .logo-fallback { font-weight:700; letter-spacing:0.4px; font-size:14px; color:var(--accent); text-align:center; padding:6px; }
 
     main { margin-top:18px; display:grid; gap:18px; }
     .hero { background:var(--panel); padding:18px; border-radius:10px; }
@@ -56,7 +69,7 @@
     .dept strong { display:block; color:var(--accent); margin-bottom:6px; }
     .small { font-size:13px; color:var(--muted); }
 
-    .apply { display:block; text-decoration:none; margin-top:12px; padding:12px 14px; background:var(--accent); color:var(--panel); border-radius:10px; font-weight:700; width:fit-content; }
+    .apply { display:inline-block; text-decoration:none; margin-top:12px; padding:12px 14px; background:var(--accent); color:var(--panel); border-radius:10px; font-weight:700; width:fit-content; }
     .apply.small { padding:8px 10px; font-size:14px; }
 
     footer { margin-top:18px; color:var(--muted); font-size:13px; text-align:center; padding:14px; }
@@ -65,30 +78,31 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* subtle responsive reduce */
-    @media(max-width:520px){
+    @media(max-width:760px){
       header { flex-direction:column; align-items:flex-start; gap:10px; }
       .controls { margin-left:0; width:100%; justify-content:space-between; }
+      .logo { margin-left:0; align-self:flex-end; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="logo" id="logoWrap">
-        <!-- primary logo; fallback handled via script -->
+      <div class="head-left">
+        <div class="head-text">
+          <h1>Havenwatch Foundation</h1>
+          <p>Volunteer-led, civilian NGO dedicated to online child protection through lawful, trauma-aware, and evidence-based practice.</p>
+        </div>
+
+        <div class="controls" aria-hidden="true">
+          <button class="btn" id="themeToggle" type="button" aria-pressed="false">Switch to cream</button>
+          <a class="btn secondary" href="https://tally.so/r/BzxrQ1" target="_blank" rel="noopener">Apply to Volunteer</a>
+        </div>
+      </div>
+
+      <div class="logo" id="logoWrap" aria-hidden="false">
         <img id="siteLogo" src="assets/logo1.webp" alt="Havenwatch logo" />
         <div id="logoFallback" class="logo-fallback" style="display:none;">Havenwatch</div>
-      </div>
-
-      <div>
-        <h1>Havenwatch Foundation</h1>
-        <p>Volunteer-led, civilian NGO dedicated to online child protection through lawful, trauma-aware, and evidence-based practice.</p>
-      </div>
-
-      <div class="controls" aria-hidden="true">
-        <button class="btn" id="themeToggle">Toggle theme</button>
-        <a class="btn secondary" href="https://tally.so/r/BzxrQ1" target="_blank" rel="noopener">Apply to Volunteer</a>
       </div>
     </header>
 
@@ -172,26 +186,6 @@
               General: <a href="mailto:contact@havenwatch.org">contact@havenwatch.org</a><br>
               Security & Ops: <a href="mailto:ops@havenwatch.org">ops@havenwatch.org</a>
             </p>
-
-            <h3 style="margin-top:14px;">Logo troubleshooting</h3>
-            <p class="small">
-              If the logo does not appear: upload your logo as <code>assets/logo1.webp</code> and ensure the file name and casing exactly match.
-              After upload, hard-refresh the site (Ctrl/Cmd + Shift + R). The page will show the text title if the image fails to load.
-            </p>
-          </div>
-
-          <div class="card" style="margin-top:12px;">
-            <h3>Where to paste this file</h3>
-            <p class="small">
-              Save this file as <code>index.html</code> in the root of your repository:
-            </p>
-            <pre class="small" style="background:transparent;color:var(--muted);padding:8px;border-radius:6px;border:1px dashed rgba(255,255,255,0.03);">
-havenwatch-foundation.github.io/
-├── index.html    ← place here
-└── assets/
-    └── logo1.webp
-            </pre>
-            <p class="small">Use "Add file → Create new file" and paste this code, or upload directly and commit to the <code>main</code> branch.</p>
           </div>
         </aside>
       </div>
@@ -204,36 +198,68 @@ havenwatch-foundation.github.io/
   </div>
 
   <script>
-    // Theme toggle
     (function(){
-      const toggle = document.getElementById('themeToggle');
-      const root = document.documentElement;
       const body = document.body;
-      // default is dark/minimal; user can toggle to cream
-      toggle.addEventListener('click', function(){
+      const toggle = document.getElementById('themeToggle');
+      const LOGO_ID = 'siteLogo';
+      const FALLBACK_ID = 'logoFallback';
+      const logo = document.getElementById(LOGO_ID);
+      const fallback = document.getElementById(FALLBACK_ID);
+
+      // Initialize theme from localStorage (if present)
+      const stored = localStorage.getItem('havenwatch_theme');
+      if (stored === 'cream') {
+        body.classList.add('cream');
+      }
+      updateToggleText();
+
+      toggle.addEventListener('click', () => {
         body.classList.toggle('cream');
-        toggle.textContent = body.classList.contains('cream') ? 'Switch to dark' : 'Switch to cream';
+        const isCream = body.classList.contains('cream');
+        localStorage.setItem('havenwatch_theme', isCream ? 'cream' : 'dark');
+        updateToggleText();
       });
 
+      function updateToggleText() {
+        const isCream = body.classList.contains('cream');
+        toggle.textContent = isCream ? 'Switch to dark' : 'Switch to cream';
+        toggle.setAttribute('aria-pressed', String(isCream));
+      }
+
       // Logo fallback handling
-      const img = document.getElementById('siteLogo');
-      const fallback = document.getElementById('logoFallback');
-      img.addEventListener('error', function(){
-        img.style.display = 'none';
-        fallback.style.display = 'block';
-      });
-      // If image loads, ensure fallback hidden
-      img.addEventListener('load', function(){
-        fallback.style.display = 'none';
-        img.style.display = 'block';
-      });
-      // Attempt quick visibility check in case browser cached a 404
-      setTimeout(() => {
-        if (!img.complete || img.naturalWidth === 0) {
-          img.style.display = 'none';
-          fallback.style.display = 'block';
-        }
-      }, 300);
+      function showFallback() {
+        if (logo) logo.style.display = 'none';
+        if (fallback) fallback.style.display = 'block';
+      }
+      function showLogo() {
+        if (logo) logo.style.display = 'block';
+        if (fallback) fallback.style.display = 'none';
+      }
+
+      if (logo) {
+        logo.addEventListener('error', showFallback);
+        logo.addEventListener('abort', showFallback);
+        logo.addEventListener('load', function(){
+          // if naturalWidth is zero treat as failed
+          if (logo.naturalWidth === 0) {
+            showFallback();
+          } else {
+            showLogo();
+          }
+        });
+
+        // quick check (covers cached 404s)
+        setTimeout(() => {
+          if (!logo.complete || logo.naturalWidth === 0) {
+            showFallback();
+          } else {
+            showLogo();
+          }
+        }, 200);
+      } else {
+        // no img element at all
+        showFallback();
+      }
     })();
   </script>
 </body>
