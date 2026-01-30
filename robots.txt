@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://havenwatchfoundation.github.io/sitemap.xml
