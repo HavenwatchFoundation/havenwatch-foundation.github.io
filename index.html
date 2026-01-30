@@ -1,252 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Havenwatch Foundation — Online Child Protection</title>
-
+<link rel="icon" href="assets/logo1.webp" />
 <style>
 :root{
-  --bg:#0f1720;
-  --panel:#0b1220;
-  --accent:#e6decf;
-  --muted:#9aa4b2;
-  --text:#f3f4f6;
-  --maxw:1000px;
+  --bg:#0f1720; --panel:#0b1220; --accent:#e6decf; --muted:#9aa4b2; --text:#f3f4f6; --maxw:1000px;
 }
-.cream{
-  --bg:#fbf7ef;
-  --panel:#fffaf2;
-  --accent:#2b3b4a;
-  --muted:#5a646c;
-  --text:#15202b;
-}
-
+.cream{ --bg:#fbf7ef; --panel:#fffaf2; --accent:#2b3b4a; --muted:#5a646c; --text:#15202b; }
 *{box-sizing:border-box;}
-html,body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--text);}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
 .wrap{max-width:var(--maxw);margin:28px auto;padding:20px;}
-
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px;
-  padding:18px;
-  border-radius:10px;
-  background:linear-gradient(180deg,rgba(0,0,0,0.05),transparent);
-}
-
-.head-left{display:flex;gap:14px;align-items:center;}
-.head-text h1{margin:0;color:var(--accent);font-size:20px;}
-.head-text p{margin:4px 0 0;color:var(--muted);font-size:13px;}
-
-.controls{display:flex;gap:8px;}
-.btn{
-  border:1px solid rgba(255,255,255,0.06);
-  background:transparent;
-  color:var(--accent);
-  padding:8px 12px;
-  border-radius:8px;
-  font-weight:600;
-  cursor:pointer;
-  text-decoration:none;
-  font-size:13px;
-}
+header{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:18px;border-radius:10px;background:linear-gradient(180deg,rgba(0,0,0,0.05),transparent);}
+.brand{display:flex;gap:14px;align-items:center;min-width:0;}
+.title h1{margin:0;color:var(--accent);font-size:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.title p{margin:4px 0 0;color:var(--muted);font-size:13px;}
+.nav{display:flex;gap:8px;align-items:center;}
+.btn{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--accent);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer;text-decoration:none;font-size:13px;}
 .btn.secondary{border-style:dashed;color:var(--muted);}
-
-.logo{
-  width:84px;height:84px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--panel);
-  border-radius:10px;
-}
-.logo img{max-width:76px;max-height:76px;}
-.logo-fallback{display:none;color:var(--accent);font-weight:700;}
-
+.logo{width:84px;height:84px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--panel);}
+.logo img{max-width:76px;max-height:76px;display:block;}
+.logo-fallback{display:none;font-weight:700;color:var(--accent);font-size:14px;}
 main{margin-top:18px;display:grid;gap:18px;}
-.card{
-  background:var(--panel);
-  padding:14px;
-  border-radius:10px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.18);
-}
-.card h3{margin:0 0 8px;color:var(--accent);}
+.card{background:var(--panel);padding:14px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.18);}
+.hero h2{margin:0 0 8px 0;color:var(--accent);font-size:18px;}
 .small{font-size:13px;color:var(--muted);line-height:1.5;}
-
 .columns{display:grid;gap:16px;}
 @media(min-width:900px){.columns{grid-template-columns:1fr 360px;}}
-
-.dept{
-  margin-top:8px;
-  padding:10px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.05);
-  background:rgba(255,255,255,0.02);
-}
-
-.apply{
-  display:inline-block;
-  margin-top:12px;
-  padding:12px 14px;
-  border-radius:10px;
-  font-weight:700;
-  background:var(--accent);
-  color:var(--panel);
-  text-decoration:none;
-}
-
+.dept{margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);}
+.apply{display:inline-block;margin-top:12px;padding:12px 14px;border-radius:10px;font-weight:700;background:var(--accent);color:var(--panel);text-decoration:none;}
 footer{text-align:center;margin-top:18px;font-size:13px;color:var(--muted);}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
+a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+@media(max-width:760px){header{flex-direction:column;align-items:flex-start}.logo{margin-left:0;align-self:flex-end}}
 </style>
 </head>
-
 <body>
 <div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="title">
+        <h1>Havenwatch Foundation</h1>
+        <p>Volunteer-led civilian initiative focused on online child protection.</p>
+      </div>
 
-<header>
-  <div class="head-left">
-    <div class="head-text">
-      <h1>Havenwatch Foundation</h1>
-      <p>Volunteer-led civilian initiative focused on online child protection.</p>
+      <nav class="nav" aria-label="Primary">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="about.html">About</a>
+        <a class="btn" href="departments.html">Departments</a>
+        <a class="btn secondary" href="https://tally.so/r/BzxrQ1" target="_blank" rel="noopener">Apply</a>
+      </nav>
     </div>
 
-    <div class="controls">
-      <button class="btn" id="themeToggle">Switch to light</button>
-      <a class="btn secondary" href="https://tally.so/r/BzxrQ1" target="_blank">Apply to Volunteer</a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="btn" id="themeToggle" type="button">Switch to light</button>
+      <div class="logo" id="logoWrap">
+        <img id="siteLogo" src="assets/logo1.webp" alt="Havenwatch logo" />
+        <div id="logoFallback" class="logo-fallback">Havenwatch</div>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <div class="logo">
-    <img id="siteLogo" src="assets/logo1.webp">
-    <div id="logoFallback" class="logo-fallback">Havenwatch</div>
-  </div>
-</header>
+  <main>
+    <section class="card hero">
+      <h2>Who we are</h2>
+      <p class="small">
+        Havenwatch is a civilian-founded initiative supporting lawful reporting, evidence organization, and online safety education.
+      </p>
+      <p class="small" style="margin-top:8px;">
+        <strong>Status note (Jan 2026):</strong> Havenwatch is in the process of officially registering as an NGO. We currently operate as a volunteer initiative.
+      </p>
+    </section>
 
-<main>
+    <div class="columns">
+      <div>
+        <section class="card">
+          <h3>What we do</h3>
+          <p class="small">
+            We review referrals, assess whether material meets reporting standards, and prepare reports for lawful submission to platforms, NGOs, or authorities. We emphasize trauma-aware, evidence-based handling and strict legal compliance.
+          </p>
+        </section>
 
-<section class="card">
-<h3>Who we are</h3>
-<p class="small">
-Havenwatch Foundation for Child protection is a civilian-founded initiative supporting lawful reporting, evidence organization, and online safety education.
-</p>
-<p class="small" style="margin-top:8px;">
-<b>Status note (Jan 2026):</b> We are in the process of officially registering as an NGO. We currently operate as a volunteer initiative.
-</p>
-</section>
+        <section class="card" style="margin-top:12px;">
+          <h3>Departments (overview)</h3>
+          <div class="dept"><strong>Intake & Triage</strong><p class="small">Frontline screening and case routing.</p></div>
+          <div class="dept"><strong>Digital Analysis</strong><p class="small">OSINT and context analysis.</p></div>
+          <div class="dept"><strong>Legal & Policy</strong><p class="small">Legal screening, packaging, and external relations.</p></div>
+          <div class="dept"><strong>Operations</strong><p class="small">Case management and access control.</p></div>
+          <div class="dept"><strong>Communications & Outreach</strong><p class="small">Education and public-facing content (legal-reviewed).</p></div>
+          <p class="small" style="margin-top:8px;"><a href="departments.html">Read the full Departments page →</a></p>
+        </section>
+      </div>
 
-<div class="columns">
+      <aside>
+        <div class="card">
+          <h3>Ready to help?</h3>
+          <p class="small">If you want to volunteer, apply and we'll match your skills to roles that fit.</p>
+          <a class="apply" href="https://tally.so/r/BzxrQ1" target="_blank" rel="noopener">Open volunteer application</a>
 
-<div>
+          <h3 style="margin-top:14px;">Contact</h3>
+          <p class="small"><a href="mailto:havenwatchfoundation@proton.me">havenwatchfoundation@proton.me</a></p>
+        </div>
 
-<section class="card">
-<h3>What we do</h3>
-<p class="small">
-We review referrals, assess whether material meets reporting standards, and prepare reports for lawful submission to platforms, NGOs, or authorities.
-</p>
-</section>
+        <div class="card" style="margin-top:12px;">
+          <h3>Reporting & Support</h3>
+          <p class="small">Suspected child sexual exploitation should be reported promptly to trusted authorities or hotlines. We encourage reporting to law enforcement or to NCMEC's CyberTipline.</p>
+          <p class="small" style="margin-top:8px;"><strong>NCMEC CyberTipline:</strong><br /><a href="https://report.cybertip.org" target="_blank" rel="noopener">report.cybertip.org</a></p>
+        </div>
+      </aside>
+    </div>
+  </main>
 
-<section class="card" style="margin-top:12px;">
-<h3>Departments</h3>
-
-<div class="dept">
-<b>Intake & Triage</b>
-<p class="small">Screens reports, checks completeness, and routes cases securely.</p>
-</div>
-
-<div class="dept">
-<b>Digital Analysis</b>
-<p class="small">OSINT-based context review and pattern analysis.</p>
-</div>
-
-<div class="dept">
-<b>Legal & Policy</b>
-<p class="small">Ensures compliance and prepares lawful reporting packages.</p>
-</div>
-
-<div class="dept">
-<b>Operations</b>
-<p class="small">Case assignment, access control, and workflow oversight.</p>
-</div>
-
-<div class="dept">
-<b>Education & Outreach</b>
-<p class="small">Public awareness and prevention-focused content.</p>
-</div>
-
-</section>
-
-<section class="card" style="margin-top:12px;">
-<h3>Safety & Legal Boundaries</h3>
-<p class="small">
-We are not law enforcement. We work within legal frameworks and confidentiality standards.
-</p>
-</section>
-
-</div>
-
-<aside>
-
-<div class="card">
-<h3>Ready to help?</h3>
-<p class="small">
-Apply and we’ll match your skills to suitable roles.
-</p>
-<a class="apply" href="https://tally.so/r/BzxrQ1" target="_blank">Open volunteer application</a>
-
-<h3 style="margin-top:14px;">Contact</h3>
-<p class="small">
-<a href="mailto:havenwatchfoundation@proton.me">
-havenwatchfoundation@proton.me
-</a>
-</p>
-</div>
-
-<div class="card" style="margin-top:12px;">
-<h3>Reporting & Support</h3>
-<p class="small">
-If you encounter online child endangerment, reporting to authorities or trusted hotlines is often the fastest way to protect a child.
-</p>
-
-<p class="small">
-<b>NCMEC CyberTipline:</b><br>
-<a href="https://report.cybertip.org" target="_blank">
-report.cybertip.org
-</a>
-</p>
-
-<p class="small">
-You may also contact local law enforcement or national child protection organizations.
-</p>
-</div>
-
-</aside>
-
-</div>
-</main>
-
-<footer>
-<div>© 2026 Havenwatch Foundation</div>
-<div class="small">Volunteer based initiative.</div>
-</footer>
-
+  <footer>
+    <div>© 2026 Havenwatch Foundation</div>
+    <div class="small">Civilian-led initiative. Not a law enforcement agency.</div>
+  </footer>
 </div>
 
 <script>
-const body=document.body;
-const btn=document.getElementById("themeToggle");
+(function () {
+  const body = document.body;
+  const toggle = document.getElementById('themeToggle');
+  const logo = document.getElementById('siteLogo');
+  const fallback = document.getElementById('logoFallback');
 
-btn.onclick=()=>{
-  body.classList.toggle("cream");
-  btn.textContent=body.classList.contains("cream")
-    ?"Switch to dark"
-    :"Switch to light";
-};
+  const stored = localStorage.getItem('havenwatch_theme');
+  if (stored === 'cream') body.classList.add('cream');
+  updateToggle();
 
-const img=document.getElementById("siteLogo");
-const fallback=document.getElementById("logoFallback");
-img.onerror=()=>{img.style.display="none";fallback.style.display="block";}
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('cream');
+    localStorage.setItem('havenwatch_theme', body.classList.contains('cream') ? 'cream' : 'dark');
+    updateToggle();
+  });
+
+  function updateToggle() {
+    toggle.textContent = body.classList.contains('cream') ? 'Switch to dark' : 'Switch to light';
+  }
+
+  if (logo) {
+    logo.addEventListener('error', () => { logo.style.display = 'none'; if (fallback) fallback.style.display = 'block'; });
+    logo.addEventListener('load', () => { if (logo.naturalWidth === 0) { logo.style.display = 'none'; if (fallback) fallback.style.display = 'block'; } });
+    setTimeout(() => { if (!logo.complete || logo.naturalWidth === 0) { logo.style.display='none'; if (fallback) fallback.style.display='block'; } }, 200);
+  } else { if (fallback) fallback.style.display = 'block'; }
+})();
 </script>
-
 </body>
 </html>
