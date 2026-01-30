@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Guides & Resources — Havenwatch Foundation</title>
+<link rel="icon" href="assests/havenwatchlogo.svg" type="image/svg+xml" />
+<style>
+:root{
+  --bg:#0f1720; --panel:#0b1220; --accent:#e6decf; --muted:#9aa4b2; --text:#f3f4f6; --maxw:1000px;
+}
+.cream{ --bg:#fbf7ef; --panel:#fffaf2; --accent:#2b3b4a; --muted:#5a646c; --text:#15202b; }
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
+.wrap{max-width:var(--maxw);margin:28px auto;padding:20px;}
+header{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding:20px;border-radius:10px;background:linear-gradient(180deg,rgba(0,0,0,0.05),transparent);}
+.brand{display:flex;gap:16px;align-items:center;min-width:0;}
+.title h1{margin:0;color:var(--accent);font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;}
+.title p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.4;}
+.nav{display:flex;gap:8px;align-items:center;margin-left:auto;}
+.btn{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--accent);padding:9px 14px;border-radius:8px;font-weight:600;cursor:pointer;text-decoration:none;font-size:13px;transition:all 0.2s;}
+.btn:hover{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.1);}
+.btn.secondary{border-style:dashed;color:var(--muted);}
+.logo{width:70px;height:70px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--panel);flex-shrink:0;}
+.logo img{max-width:100%;max-height:100%;display:block;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;}
+.logo-fallback{display:none;font-weight:700;color:var(--accent);font-size:14px;}
+main{margin-top:18px;display:grid;gap:18px;}
+.card{background:var(--panel);padding:16px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.18);}
+.page-title{margin:0 0 8px 0;color:var(--accent);font-size:24px;font-weight:700;}
+.page-intro{font-size:14px;color:var(--muted);line-height:1.6;margin:0;}
+.resource-card{background:var(--panel);padding:18px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.18);border-left:3px solid var(--accent);}
+.resource-card h3{margin:0 0 10px 0;color:var(--accent);font-size:18px;font-weight:700;}
+.resource-card p{font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 14px 0;}
+.resource-link{display:inline-block;padding:10px 16px;border-radius:8px;font-weight:600;background:var(--accent);color:var(--panel);text-decoration:none;font-size:13px;transition:all 0.2s;}
+.resource-link:hover{opacity:0.9;text-decoration:none;}
+footer{text-align:center;margin-top:24px;font-size:13px;color:var(--muted);}
+a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+@media(max-width:760px){
+  header{flex-direction:column;align-items:stretch;}
+  .brand{flex-direction:row;justify-content:flex-start;}
+  .nav{margin-left:0;flex-wrap:wrap;justify-content:center;}
+  .logo{width:60px;height:60px;}
+  .title h1{font-size:18px;}
+  .title p{font-size:12px;}
+  .page-title{font-size:20px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo" id="logoWrap">
+        <img id="siteLogo" src="assests/havenwatchlogo.svg" alt="Havenwatch logo" />
+        <div id="logoFallback" class="logo-fallback">Havenwatch</div>
+      </div>
+      <div class="title">
+        <h1>Havenwatch Foundation</h1>
+        <p>Volunteer-led civilian initiative focused on online child protection.</p>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="btn" href="index.html">Home</a>
+      <a class="btn" href="about.html">About</a>
+      <a class="btn" href="departments.html">Departments</a>
+      <a class="btn" href="guides.html">Guides</a>
+      <a class="btn secondary" href="https://tally.so/r/BzxrQ1" target="_blank" rel="noopener">Apply</a>
+      <button class="btn" id="themeToggle" type="button">Switch to light</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h1 class="page-title">Guides & Resources</h1>
+      <p class="page-intro">
+        This page provides access to our organizational policies and guidance documents. These resources outline our operational framework, ethical standards, and procedural guidelines for volunteers and partners.
+      </p>
+    </section>
+
+    <section class="resource-card">
+      <h3>Data Handling & Privacy Policy</h3>
+      <p>
+        This document establishes the standards and procedures for handling sensitive information within Havenwatch Foundation. It outlines data protection principles, security measures, and compliance requirements to ensure responsible stewardship of all materials processed by the organization.
+      </p>
+      <a class="resource-link" href="https://www.slideshare.net/slideshow/havenwatch-foundation-for-child-protection-data-handling-privacy-policy/285671601" target="_blank" rel="noopener">View Document</a>
+    </section>
+
+    <section class="resource-card">
+      <h3>Ethics and Safeguarding Policy</h3>
+      <p>
+        This policy defines the ethical framework and safeguarding protocols that govern all activities within Havenwatch Foundation. It addresses professional conduct expectations, risk mitigation strategies, and protective measures designed to maintain a secure and respectful environment for volunteers and the communities we serve.
+      </p>
+      <a class="resource-link" href="https://www.slideshare.net/slideshow/havenwatch-foundation-ethics-safeguarding-policy/285671686" target="_blank" rel="noopener">View Document</a>
+    </section>
+
+    <section class="resource-card">
+      <h3>Code of Conduct</h3>
+      <p>
+        The Code of Conduct sets forth the behavioral standards and professional expectations for all individuals associated with Havenwatch Foundation. It provides clear guidelines on acceptable conduct, communication protocols, and the processes for addressing violations or concerns that may arise during organizational activities.
+      </p>
+      <a class="resource-link" href="https://www.slideshare.net/slideshow/havenwatch-foundation-for-child-protection-code-of-conduct/285671934" target="_blank" rel="noopener">View Document</a>
+    </section>
+
+    <section class="resource-card">
+      <h3>Organizational Charter</h3>
+      <p>
+        The Organizational Charter establishes the foundational structure, governance model, and operational principles of Havenwatch Foundation. This document articulates the mission, scope of activities, organizational roles, and the framework through which the foundation operates and makes decisions.
+      </p>
+      <a class="resource-link" href="https://www.slideshare.net/slideshow/havenwatch-foundation-organizational-charter-df24/285671935" target="_blank" rel="noopener">View Document</a>
+    </section>
+
+    <section class="resource-card">
+      <h3>Volunteer Engagement Policy</h3>
+      <p>
+        This policy outlines the procedures and expectations for volunteer participation within Havenwatch Foundation. It covers recruitment processes, role assignments, training requirements, and the terms under which volunteers contribute to the organization's mission and activities.
+      </p>
+      <a class="resource-link" href="https://www.slideshare.net/slideshow/havenwatch-foundation-volunteer-engagement-policy/285672056" target="_blank" rel="noopener">View Document</a>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2026 Havenwatch Foundation</div>
+    <div class="small">Civilian-led initiative. Not a law enforcement agency.</div>
+  </footer>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const body = document.body;
+  const toggle = document.getElementById('themeToggle');
+  const logo = document.getElementById('siteLogo');
+  const fallback = document.getElementById('logoFallback');
+
+  // Load saved theme preference
+  const stored = localStorage.getItem('havenwatch_theme');
+  if (stored === 'cream') {
+    body.classList.add('cream');
+  }
+  updateToggle();
+
+  // Theme toggle click handler
+  if (toggle) {
+    toggle.addEventListener('click', function() {
+      body.classList.toggle('cream');
+      const newTheme = body.classList.contains('cream') ? 'cream' : 'dark';
+      localStorage.setItem('havenwatch_theme', newTheme);
+      updateToggle();
+    });
+  }
+
+  function updateToggle() {
+    if (toggle) {
+      toggle.textContent = body.classList.contains('cream') ? 'Switch to dark' : 'Switch to light';
+    }
+  }
+
+  // Logo fallback handling for SVG
+  if (logo) {
+    logo.addEventListener('error', function() { 
+      logo.style.display = 'none'; 
+      if (fallback) fallback.style.display = 'block'; 
+    });
+    
+    logo.addEventListener('load', function() { 
+      if (logo.naturalWidth === 0) { 
+        logo.style.display = 'none'; 
+        if (fallback) fallback.style.display = 'block'; 
+      } 
+    });
+    
+    setTimeout(function() { 
+      if (!logo.complete || logo.naturalWidth === 0) { 
+        logo.style.display = 'none'; 
+        if (fallback) fallback.style.display = 'block'; 
+      } 
+    }, 200);
+  } else { 
+    if (fallback) fallback.style.display = 'block'; 
+  }
+});
+</script>
+</body>
+</html>
