@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Havenwatch Foundation — Online Child Protection</title>
+<link rel="icon" href="assests/havenwatchlogo.svg" type="image/svg+xml" />
+<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2026/01/30/09/20260130095907-8J8I5EWF.js" defer></script>
+<style>
+:root{
+  --bg:#0f1720; --panel:#0b1220; --accent:#e6decf; --muted:#9aa4b2; --text:#f3f4f6; --maxw:1000px;
+}
+.cream{ --bg:#fbf7ef; --panel:#fffaf2; --accent:#2b3b4a; --muted:#5a646c; --text:#15202b; }
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);}
+.wrap{max-width:var(--maxw);margin:28px auto;padding:20px;}
+header{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding:20px;border-radius:10px;background:linear-gradient(180deg,rgba(0,0,0,0.05),transparent);}
+.brand{display:flex;gap:16px;align-items:center;min-width:0;}
+.title h1{margin:0;color:var(--accent);font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;}
+.title p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.4;}
+.nav{display:flex;gap:8px;align-items:center;margin-left:auto;}
+.btn{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--accent);padding:9px 14px;border-radius:8px;font-weight:600;cursor:pointer;text-decoration:none;font-size:13px;transition:all 0.2s;}
+.btn:hover{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.1);}
+.btn.secondary{border-style:dashed;color:var(--muted);}
+.logo{width:70px;height:70px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--panel);flex-shrink:0;}
+.logo img{max-width:100%;max-height:100%;display:block;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;}
+.logo-fallback{display:none;font-weight:700;color:var(--accent);font-size:14px;}
+main{margin-top:18px;display:grid;gap:18px;}
+.card{background:var(--panel);padding:14px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.18);}
+.hero h2{margin:0 0 8px 0;color:var(--accent);font-size:18px;}
+.small{font-size:13px;color:var(--muted);line-height:1.5;}
+.columns{display:grid;gap:16px;}
+@media(min-width:900px){.columns{grid-template-columns:1fr 360px;}}
+.dept{margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);}
+.apply{display:inline-block;margin-top:12px;padding:12px 14px;border-radius:10px;font-weight:700;background:var(--accent);color:var(--panel);text-decoration:none;}
+footer{text-align:center;margin-top:18px;font-size:13px;color:var(--muted);}
+/* Popup styles */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;}
+.popup-overlay.show{opacity:1;visibility:visible;}
+.popup-modal{background:var(--panel);border-radius:16px;max-width:480px;width:100%;box-shadow:0 25px 80px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);overflow:hidden;transform:scale(0.9);transition:transform 0.3s;}
+.popup-overlay.show .popup-modal{transform:scale(1);}
+.popup-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.06);background:linear-gradient(180deg,rgba(230,222,207,0.05),transparent);}
+.popup-header h3{margin:0;color:var(--accent);font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px;}
+.popup-header h3::before{content:"⚠️";font-size:20px;}
+.popup-close{width:32px;height:32px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all 0.2s;}
+.popup-close:hover{background:rgba(255,255,255,0.06);color:var(--text);}
+.popup-body{padding:24px;}
+.popup-body p{margin:0 0 14px;color:var(--text);line-height:1.6;font-size:14px;}
+.popup-body p:last-child{margin-bottom:0;}
+.popup-body .highlight{color:var(--accent);font-weight:600;}
+.popup-cta{display:flex;gap:12px;margin-top:20px;}
+.popup-btn{flex:1;padding:12px 16px;border-radius:10px;font-weight:600;font-size:14px;text-align:center;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
+.popup-btn.primary{background:var(--accent);color:var(--panel);}
+.popup-btn.primary:hover{opacity:0.9;transform:translateY(-1px);}
+.popup-btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--muted);}
+.popup-btn.secondary:hover{border-color:rgba(255,255,255,0.25);color:var(--text);background:rgba(255,255,255,0.03);}
+.cream .popup-overlay{background:rgba(0,0,0,0.5);}
+.cream .popup-modal{box-shadow:0 25px 80px rgba(0,0,0,0.25);border-color:rgba(0,0,0,0.08);}
+.cream .popup-header{background:linear-gradient(180deg,rgba(43,59,74,0.05),transparent);border-color:rgba(0,0,0,0.06);}
+.cream .popup-btn.secondary{border-color:rgba(0,0,0,0.15);color:var(--muted);}
+.cream .popup-btn.secondary:hover{border-color:rgba(0,0,0,0.25);color:var(--text);background:rgba(0,0,0,0.03);}
+@media(max-width:760px){
+  header{flex-direction:column;align-items:stretch;}
+  .brand{flex-direction:row;justify-content:flex-start;}
+  .nav{margin-left:0;flex-wrap:wrap;justify-content:center;}
+  .logo{width:60px;height:60px;}
+  .title h1{font-size:18px;}
+  .title p{font-size:12px;}
+}
+</style>
+</head>
+<body>
+<div class="popup-overlay" id="discontinuedPopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+  <div class="popup-modal">
+    <div class="popup-header">
+      <h3 id="popupTitle">Site Discontinued</h3>
+      <button class="popup-close" id="popupClose" aria-label="Close popup">&times;</button>
+    </div>
+    <div class="popup-body">
+      <p><span class="highlight">Important Notice:</span> This site has been discontinued and is no longer maintained.</p>
+      <p>Havenwatch Foundation has moved to a new official website. All future updates, information, and volunteer opportunities will be available at our new location.</p>
+      <div class="popup-cta">
+        <a href="https://www.havenwatchfoundation.org" class="popup-btn primary">Visit New Site</a>
+        <button class="popup-btn secondary" id="popupDismiss">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+    <div class="brand">
+      <div class="logo" id="logoWrap">
+        <img id="siteLogo" src="assests/havenwatchlogo.svg" alt="Havenwatch logo" />
+        <div id="logoFallback" class="logo-fallback">Havenwatch</div>
+      </div>
+      <div class="title">
+        <h1>Havenwatch Foundation</h1>
+        <p>Volunteer-led civilian initiative focused on online child protection.</p>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="btn" href="index.html">Home</a>
+      <a class="btn" href="about.html">About</a>
+      <a class="btn" href="departments.html">Departments</a>
+      <a class="btn" href="guides.html">Guides</a>
+      <a class="btn secondary" href="https://tally.so/r/BzxrQ1" target="_blank" rel="noopener">Apply</a>
+      <button class="btn" id="themeToggle" type="button">Switch to light</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card hero">
+      <h2>Who we are</h2>
+      <p class="small">
+        Havenwatch is a civilian-founded initiative supporting lawful reporting, evidence organization, and online safety education.
+      </p>
+      <p class="small" style="margin-top:8px;">
+        <strong>Status note (Jan 2026):</strong> Havenwatch is in the process of officially registering as an NGO. We currently operate as a volunteer initiative.
+      </p>
+    </section>
+
+    <div class="columns">
+      <div>
+        <section class="card">
+          <h3>What we do</h3>
+          <p class="small">
+            We review referrals, assess whether material meets reporting standards, and prepare reports for lawful submission to platforms, NGOs, or authorities. We emphasize trauma-aware, evidence-based handling and strict legal compliance.
+          </p>
+        </section>
+
+        <section class="card" style="margin-top:12px;">
+          <h3>Departments (overview)</h3>
+          <div class="dept"><strong>Intake & Triage</strong><p class="small">Frontline screening and case routing.</p></div>
+          <div class="dept"><strong>Digital Analysis</strong><p class="small">OSINT and context analysis.</p></div>
+          <div class="dept"><strong>Legal & Policy</strong><p class="small">Legal screening, packaging, and external relations.</p></div>
+          <div class="dept"><strong>Operations</strong><p class="small">Case management and access control.</p></div>
+          <div class="dept"><strong>Communications & Outreach</strong><p class="small">Education and public-facing content (legal-reviewed).</p></div>
+          <p class="small" style="margin-top:8px;"><a href="departments.html">Read the full Departments page →</a></p>
+        </section>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Ready to help?</h3>
+          <p class="small">If you want to volunteer, apply and we'll match your skills to roles that fit.</p>
+          <a class="apply" href="https://tally.so/r/BzxrQ1" target="_blank" rel="noopener">Open volunteer application</a>
+
+          <h3 style="margin-top:14px;">Contact</h3>
+          <p class="small"><a href="mailto:havenwatchfoundation@proton.me">havenwatchfoundation@proton.me</a></p>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+          <h3>Reporting & Support</h3>
+          <p class="small">Suspected child sexual exploitation should be reported promptly to trusted authorities or hotlines. We encourage reporting to law enforcement or to NCMEC's CyberTipline.</p>
+          <p class="small" style="margin-top:8px;"><strong>NCMEC CyberTipline:</strong><br /><a href="https://report.cybertip.org" target="_blank" rel="noopener">report.cybertip.org</a></p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div>© 2026 Havenwatch Foundation</div>
+    <div class="small">Civilian-led initiative. Not a law enforcement agency.</div>
+  </footer>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  
+  function initPopup() {
+    var popup = document.getElementById('discontinuedPopup');
+    var closeBtn = document.getElementById('popupClose');
+    var dismissBtn = document.getElementById('popupDismiss');
+    
+    if (!popup) return;
+    
+    // Show popup on every visit (no session storage check - always show)
+    setTimeout(function() {
+      popup.classList.add('show');
+    }, 300);
+    
+    function closePopup() {
+      popup.classList.remove('show');
+    }
+    
+    if (closeBtn) closeBtn.addEventListener('click', closePopup);
+    if (dismissBtn) dismissBtn.addEventListener('click', closePopup);
+    
+    // Close on backdrop click
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) closePopup();
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && popup.classList.contains('show')) {
+        closePopup();
+      }
+    });
+  }
+  
+  // Initialize popup
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPopup);
+  } else {
+    initPopup();
+  }
+  
+  // Wait for DOM to be fully loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTheme);
+  } else {
+    initTheme();
+  }
+  
+  function initTheme() {
+    var body = document.body;
+    var toggle = document.getElementById('themeToggle');
+    var logo = document.getElementById('siteLogo');
+    var fallback = document.getElementById('logoFallback');
+
+    if (!toggle) {
+      console.error('Theme toggle button not found');
+      return;
+    }
+
+    // Load saved theme preference
+    var stored = localStorage.getItem('havenwatch_theme');
+    if (stored === 'cream') {
+      body.classList.add('cream');
+    }
+    updateToggle();
+
+    // Theme toggle click handler
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      body.classList.toggle('cream');
+      var newTheme = body.classList.contains('cream') ? 'cream' : 'dark';
+      localStorage.setItem('havenwatch_theme', newTheme);
+      updateToggle();
+    });
+
+    function updateToggle() {
+      toggle.textContent = body.classList.contains('cream') ? 'Switch to dark' : 'Switch to light';
+    }
+
+    // Logo fallback handling for SVG
+    if (logo) {
+      logo.addEventListener('error', function() { 
+        logo.style.display = 'none'; 
+        if (fallback) fallback.style.display = 'block'; 
+      });
+      
+      logo.addEventListener('load', function() { 
+        if (logo.naturalWidth === 0) { 
+          logo.style.display = 'none'; 
+          if (fallback) fallback.style.display = 'block'; 
+        } 
+      });
+      
+      setTimeout(function() { 
+        if (!logo.complete || logo.naturalWidth === 0) { 
+          logo.style.display = 'none'; 
+          if (fallback) fallback.style.display = 'block'; 
+        } 
+      }, 200);
+    } else { 
+      if (fallback) fallback.style.display = 'block'; 
+    }
+  }
+})();
+</script>
+</body>
+</html>
